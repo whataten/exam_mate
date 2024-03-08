@@ -127,4 +127,8 @@ gradle-app.setting
 # Java heap dump
 *.hprof
 
+### Doc ###
+# PowerPoint
+*.pptx
+
 # End of https://www.toptal.com/developers/gitignore/api/git,visualstudiocode,java,gradle,macos
