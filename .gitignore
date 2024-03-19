@@ -169,4 +169,7 @@ gradle-app.setting
 # PowerPoint
 *.pptx
 
+### Key, Tokens ###
+*.properties
+
 # End of https://www.toptal.com/developers/gitignore/api/git,visualstudiocode,java,gradle,macos
