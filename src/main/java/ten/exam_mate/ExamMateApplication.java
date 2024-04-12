@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import lombok.extern.slf4j.Slf4j;
+
 import retrofit2.Call;
 import retrofit2.Response;
 import ten.exam_mate.APIRequest.APIRequest;
 import ten.exam_mate.APIResponse.APIResponse;
 
+@Slf4j
 @SpringBootApplication
 public class ExamMateApplication {
 
@@ -23,36 +26,39 @@ public class ExamMateApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ExamMateApplication.class, args);
 	}
-	
+
 	@Controller
 	class FormController {
-		
+
 		@GetMapping("/")
 		public String homePage() {
 			return "index";
 		}
-		
+
 		@PostMapping("/")
 		public String submitForm(@RequestParam("inputValue") String inputValue, Model model) {
-			
+			log.info("inputValue : " + inputValue);
+
 			APIService apiService = RetrofitClient.getService();
-			
+
 			// Bearer 토큰 설정
-			 String bearerToken = properties.getBearerToken();
+			String bearerToken = properties.getBearerToken();
 
 			// 요청 본문 데이터 설정
 			APIRequest apiRequest = new APIRequest(inputValue);
-			
+
 			// POST 요청 보내기
 			Call<APIResponse> call = apiService.sendPostRequest("Bearer " + bearerToken, apiRequest);
 			try {
 				Response<APIResponse> response = call.execute();
 				if (response.isSuccessful()) {
 					APIResponse apiResponse = response.body();
-					
+
 					var content = apiResponse.getChoices().get(0).getMessage().getContent();
+
+					log.info("content : " + content);
+
 					model.addAttribute("inputValue", content);
-					
 				} else {
 					model.addAttribute("inputValue", "다시 입력하세요.");
 				}
