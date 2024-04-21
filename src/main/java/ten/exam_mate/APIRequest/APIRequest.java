@@ -18,7 +18,7 @@ public class APIRequest {
 
         this.max_tokens = 4096;
 
-        this.response_format = new ResponseFormatDTO("json_object");
+        this.responseFormat = new ResponseFormatDTO("json_object");
     }
 
     @JsonProperty("model")
@@ -28,7 +28,7 @@ public class APIRequest {
     private int max_tokens;
 
     @JsonProperty("response_format")
-    private ResponseFormatDTO response_format;
+    private ResponseFormatDTO responseFormat;
 
     @JsonProperty("messages")
     private ArrayList<MessageDTO> messages;
