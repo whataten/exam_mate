@@ -9,5 +9,4 @@ class ExamMateApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
