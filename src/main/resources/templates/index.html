@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam-Mate</title>
+</head>
+<body>
+    <h1>Exam-Mate</h1>
+    <form method="post" action="/">
+        <label for="inputValue">Please enter the content to generate the exam:</label><br>
+        <input type="text" id="inputValue" name="inputValue"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <h2>generated exams:</h2>
+    <p th:text="${inputValue}"></p>
+</body>
+</html>
